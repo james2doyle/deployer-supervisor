@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\Deployer\Supervisor;
 
 use function Deployer\get;
-use function Deployer\locateBinaryPath;
+use function Deployer\which;
 use function Deployer\run;
 use function Deployer\set;
 use function Deployer\task;
@@ -17,7 +17,7 @@ use Webmozart\Assert\Assert;
  * The supervisor(ctl) binary
  */
 set('bin/supervisor', static function (): string {
-    $binary = locateBinaryPath('supervisorctl');
+    $binary = which('supervisorctl');
     Assert::string($binary);
 
     return $binary;
