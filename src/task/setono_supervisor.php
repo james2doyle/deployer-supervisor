@@ -115,3 +115,7 @@ task('supervisor:start', static function (): void {
         run('{{bin/supervisor}} start all');
     }
 })->desc('Starts all services managed by Supervisor');
+
+task('supervisor:install', function () {
+    run('apt-get install -y supervisor', env: ['DEBIAN_FRONTEND' => 'noninteractive'], timeout: 900);
+})->desc('Installs supervisor on the host');
